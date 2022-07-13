@@ -1,0 +1,21 @@
+<view wx:if="{{showStatus}}" class="bg {{extraClasses}}">
+    <view class="infobox">
+        <view wx:if="{{title != ''}}" class="title">{{title}}</view>
+        <view class="content">
+            <block wx:for="{{richcontent.nodes}}" wx:key="value">
+                <view class="msg_box_text" wx:if="{{item.type == 'string'}}">{{item.value}}</view>
+                <view
+                    wx:if="{{item.type == 'a'}}"
+                    data-url="{{item.href}}"
+                    bindtap="clicka"
+                    class="msg_box_a"
+                >{{item.value}}
+                </view>
+            </block>
+        </view>
+        <view class="bottom_button_group">
+            <view class="button button_left" style="color: {{confirmColor}};" bindtap="onConfirmTap">{{confirmText}}</view>
+            <view wx:if="{{showCancel}}" style="color: {{cancelColor}};" class="button button_right" bindtap="onCancelTap">{{cancelText}}</view>
+        </view>
+    </view>
+</view>
