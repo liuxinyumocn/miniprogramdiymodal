@@ -44,6 +44,9 @@ Component({
     richcontent:{},
     showStatus:false,
     extraClasses:'',
+    confirm: null,
+    cancel: null,
+    openurl: null,
   },
 
   lifetimes:{
@@ -53,13 +56,16 @@ Component({
       if(res !== this.data.showStatus){ //开始切换显示状态 使用动画方式展示
         if(res){ //显示
           this.setData({
-            extraClasses: 'box-show',
+            extraClasses: 'diymodal_box-show',
             showStatus: true,
           })
         }else{ //隐藏
           this.setData({
-            extraClasses: 'box-hide',
+            extraClasses: 'diymodal_box-hide',
           })
+          this.data.openurl = null;
+          this.data.cancel = null;
+          this.data.confirm = null;
           setTimeout(()=>{
             this.setData({
               showStatus: false,
@@ -156,21 +162,52 @@ Component({
       };
     },
     onConfirmTap(){
+      this.triggerEvent('confrim');
+      if(this.data.confirm && typeof this.data.confirm === 'function'){
+        this.data.confirm();
+      }
       this.setData({
         show:false,
       })
-      this.triggerEvent('confrim');
     },
     onCancelTap(){
+      this.triggerEvent('cancel');
+      if(this.data.cancel && typeof this.data.cancel === 'function'){
+        this.data.cancel();
+      }
       this.setData({
         show:false,
       })
-      this.triggerEvent('cancel');
-      wx.showM
     },
     clicka(res){
       const url = res.currentTarget.dataset.url;
       this.triggerEvent('openurl',{url});
-    }
+      if(this.data.openurl && typeof this.data.openurl === 'function'){
+        this.data.openurl(url);
+      }
+    },
+    hideModal(){
+      this.setData({
+        show:false,
+      })
+    },
+    showModal(opt){
+        const keys = ['title','content','showCancel','cancelText','cancelColor','confirmText','confirmColor'];
+        let _opt = {
+          show:true,
+        };
+        keys.forEach((value)=>{
+          if(value in opt){
+            _opt[value] = opt[value];
+          }
+        })
+        const callbackkeys = ['confirm','cancel','openurl'];
+        callbackkeys.forEach(value => {
+          if(value in opt && typeof opt[value] === 'function'){
+            this.data[value] = opt[value];
+          }
+        })
+        this.setData(_opt)
+    },
   },
 })

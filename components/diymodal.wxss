@@ -1,30 +1,33 @@
 
-.bg{
+.diymodal_bg{
   position: fixed;
   z-index: 9999;
   width: 100%;
   height: 100%;
   background-color: rgba(104, 104, 104, 0.699);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes box-ani-show {
+@keyframes diymodal_box-ani-show {
   from {opacity: 0.0;}
   to {opacity: 1.0;}
 }
 
-@keyframes box-ani-hide {
+@keyframes diymodal_box-ani-hide {
   from {opacity: 1.0;}
   to {opacity: 0.0;}
 }
 
-.box-show {
-  animation: box-ani-show 600ms ease-out;
+.diymodal_box-show {
+  animation: diymodal_box-ani-show 800ms ease-out;
 }
-.box-hide {
-  animation: box-ani-hide 200ms ease-out;
+.diymodal_box-hide {
+  animation: diymodal_box-ani-hide 200ms ease-out;
 }
 
-.infobox{
+.diymodal_infobox{
   position: relative;
   min-height: 30rpx;
   width: 400px;
@@ -32,23 +35,23 @@
   border-radius: 5px;
   box-shadow: 0px 0px 4px rgba(63, 63, 63, 0.164);
   margin: 0px auto;
-  margin-top: 40%;
   padding:0px;
   padding-top: 30px;
 }
 @media screen and (max-width: 450px) {
-  .infobox {
+  .diymodal_infobox {
     max-width: 650rpx;
   }
 }
 
-.title{
+.diymodal_title{
   position: relative;
   text-align: center;
   font-weight: 500;
+  font-size: 17px;
 }
 
-.content{
+.diymodal_content{
   position: relative;
   text-align: left;
   font-size: 17px;
@@ -57,31 +60,32 @@
   margin-top: 10px;
 }
 
-.bottom_button_group{
+.diymodal_bottom_button_group{
   position: relative;
-  border-top: 1px solid rgba(0, 0, 0, 0.11);
+  border-top: 1px solid rgb(209, 209, 209);
   display: flex;
   min-height: 55px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-.button{
+.diymodal_button{
   width: 10000px;
   text-align: center;
   line-height: 55px;
   font-weight: bold;
+  font-size: 16px;
 }
-.button:active{
+.diymodal_button:active{
   background-color: rgb(228, 228, 228);
   border-radius: 0px 0px 5px 5px;
 }
 
-.button_right{
-  border-left: 1px solid rgba(0, 0, 0, 0.11);
+.diymodal_button_right{
+  border-left: 1px solid rgb(209, 209, 209);
 }
 
 
-.msg_box_text{
+.diymodal_msg_box_text{
   display: inline;
   position: relative;
   font-size: 17px;
@@ -90,7 +94,7 @@
   white-space: pre-wrap;
 }
 
-.msg_box_a{
+.diymodal_msg_box_a{
     display: inline;
     position: relative;
     font-size: 17px;

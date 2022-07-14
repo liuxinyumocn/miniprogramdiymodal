@@ -20,6 +20,7 @@
 
 ```html
 <diymodal 
+          id="my_diymodal"
           show="{{showModel}}" 
           title="标题内容" 
           content="{{content}}" 
@@ -61,6 +62,27 @@ Page({
     }
 })
 ```
+
+## 使用API唤出
+
+使用 `this.selectComponent('#my_diymodal')` 获取组件实例，调用 `.showModal( opt )` 即可完成API唤出。 `opt`参数字段与属性说明一一对应，且 `show` 字段无需声明，样例如下：
+
+```javascript
+const mymodal = this.selectComponent('#diymodal');
+mymodal.showModal({
+	title:'标题',
+  content:'正文',
+  showCancel: true,
+  confirm:()=>{
+    console.log('点击了确认')
+  },
+  openurl: url => {
+    console.log( url );
+  }
+})
+```
+
+值得注意的是，即使是API调用，WXML中捆绑的事件仍然会触发。
 
 ## 属性说明
 

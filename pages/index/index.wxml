@@ -1,3 +1,4 @@
-<diymodal show="{{showModel}}" title="标题标题" content="{{content}}" showCancel="true" cancelText="取消" bind:confrim="yes" bind:cancel="no" bind:openurl="openurl"></diymodal>
+<diymodal id="diymodal" show="{{showModel}}" title="标题标题" content="{{content}}" showCancel="true" cancelText="取消" bind:confrim="yes" bind:cancel="no" bind:openurl="openurl"></diymodal>
 <button bindtap="openModel">打开自定义模态框</button>
+<button bindtap="openModelApi">使用API唤出</button>
 <view>已经有的一些内容啦</view>

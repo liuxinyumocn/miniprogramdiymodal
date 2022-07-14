@@ -24,5 +24,21 @@ Page({
   },
   openurl(url){
     console.log(url)
+  },
+  openModelApi(){
+    const mymodal = this.selectComponent('#diymodal');
+    mymodal.showModal({
+      title: '标题',
+      content: `这里支持多行，并且支持任意多个「超文本标签」<a href="xxxxx">这是一个超文本标签</a>
+      这里是第二行；
+      第三行；
+      `,
+      confirm:()=>{
+        console.log(222);
+      },
+      openurl:(url)=>{
+        console.log(url);
+      }
+    })
   }
 })
